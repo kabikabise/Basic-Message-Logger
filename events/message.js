@@ -8,15 +8,22 @@ module.exports = async (client, message) => {
   //if (message.content.indexOf(client.config.prefix) !== 0) return;
 
   if (message.content.indexOf(client.config.prefix) !== 0){
-    //message.channel.send("PING").catch(console.error);
-    //await client.channels.cache.get('831619361230946345').send(message.content)
-    let messageAttachment = message.attachments.size > 0 ? message.attachments.array()[0].url : null
-    let embed = new Discord.MessageEmbed();
-        embed.setAuthor(message.author.tag, message.author.avatarURL())
-        embed.setDescription(message.content)
-        if (messageAttachment) embed.setImage(messageAttachment)
-        embed.setColor(14680086)
-    await client.channels.cache.get('831619361230946345').send(embed)
+    if (message.channel.name === 'general'){
+      //message.channel.send("PING").catch(console.error);
+      //await client.channels.cache.get('831619361230946345').send(message.content)
+      let messageAttachment = message.attachments.size > 0 ? message.attachments.array()[0].url : null
+      let embed = new Discord.MessageEmbed();
+          embed.setAuthor(message.author.tag, message.author.avatarURL())
+          embed.setDescription(message.content)
+          if (messageAttachment) embed.setImage(messageAttachment)
+          //embed.setDescription('in '+ message.guild.channels.cache.get(message.channel.id).toString())
+          embed.setFooter('Sent in #' + message.channel.name)
+          .setTimestamp()
+          embed.setColor(14680086)
+      //await client.channels.cache.get('831619361230946345').send(embed)
+      //minh channel
+      await client.channels.cache.get('831635090047107112').send(embed)
+    }
     return;
   }
 
