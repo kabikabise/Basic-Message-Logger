@@ -20,15 +20,15 @@ module.exports = async (client, message) => {
           embed.setFooter('Sent in #' + message.channel.name)
           .setTimestamp()
           embed.setColor(14680086)
-      //await client.channels.cache.get('831619361230946345').send(embed)
+      await client.channels.cache.get('831619361230946345').send(embed)
       //minh channel
       await client.channels.cache.get('831635090047107112').send(embed)
+      return;
     }
-    return;
   }
 
   // Ignore everyone but me
-  if (message.author.id !== client.config.ownerID) return;
+  //if (message.author.id !== client.config.ownerID) return;
 
   // Our standard argument/command name definition.
   const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
